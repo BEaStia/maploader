@@ -8,9 +8,10 @@ To use this wrapper you need:
 2) Use Osm2pgsql to load it into database with parameter -l. For example: 
 
 ```sh
- osm2pgsql -l --create --database gis_moscow ~/Downloads/RU-MOW.osm.pbf. You need to install POSTGIS extension into database.
+ osm2pgsql -l --create --database gis_moscow ~/Downloads/RU-MOW.osm.pbf. 
  ```
-
+You need to install POSTGIS extension into database.
+ 
 3) Run scripts from scripts.sql to prepare database.
 
 4) Provide necessary connection variables and use this library:
