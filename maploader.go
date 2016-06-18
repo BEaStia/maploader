@@ -6,12 +6,6 @@ import (
 )
 
 
-//alter table planet_osm_polygon add column way_json jsonb;
-//update planet_osm_polygon set way_json = st_asgeojson(way)::jsonb;
-//SELECT AddGeometryColumn ('planet_osm_polygon','centroid',4326,'POINT',2);
-//update planet_osm_polygon set centroid = st_centroid(way);
-//CREATE INDEX planet_osm_polygon_centroid_index ON planet_osm_polygon USING GIST (centroid);
-
 type MapLoader struct {
 	Db		*pg.DB
 	Username	string
@@ -45,7 +39,7 @@ func (m MapLoader) FindNearest(x float64, y float64) []byte {
 	SELECT osm_id,
 	       amenity,
 	       name,
-	       way_json::json->'coordinates'->0 as way_json,
+	       way_json::json as way_json,
 	       ST_Distance(column1::geography, centroid::geography) as distance
 	FROM planet_osm_polygons,
 	     (
